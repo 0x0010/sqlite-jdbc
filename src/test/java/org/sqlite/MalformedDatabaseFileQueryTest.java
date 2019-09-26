@@ -52,6 +52,16 @@ public class MalformedDatabaseFileQueryTest {
             while (resultSet.next()) {
                 System.out.println(resultSet.getInt(1) + "," + resultSet.getString(2));
             }
+            resultSet.close();
+            resultSet = null;
+
+            statement.clearParameters();
+            statement.setInt(1, 2);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                System.out.println(resultSet.getInt(1) + "," + resultSet.getString(2));
+            }
+
         } finally {
             if (null != statement && !statement.isClosed()) {
                 statement.close();
